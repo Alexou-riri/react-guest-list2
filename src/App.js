@@ -187,12 +187,14 @@ export default function GuestListApp() {
 
   return (
     <>
-      <h1>Guest List</h1>
-      <div>Invited Guests: {guestList.length}</div>
-      <div>
-        {' '}
-        Attending:{' '}
-        {guestList.filter((guest) => guest.attending === true).length}
+      <div className="GuestTitel">
+        <h1>Guest List</h1>
+        <div>Invited Guests: {guestList.length}</div>
+        <div>
+          {' '}
+          Attending:{' '}
+          {guestList.filter((guest) => guest.attending === true).length}
+        </div>
       </div>
       <div className="list">
         {isLoading ? (
@@ -244,9 +246,9 @@ export default function GuestListApp() {
       </div>
       <div className="addGuest">
         <div className={hasError ? 'error inputs' : 'inputs'}>
-          {hasError ? (
-            <p>Please submit both a first name and a last name!</p>
-          ) : null}
+          {/* {hasError ? (
+
+          ) : null} */}
           <label>
             First name:
             <input
