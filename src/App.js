@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import './App.css';
+import { css } from '@emotion/react';
+/** @jsxImportSource @emotion/react */
 
 export default function Guestlist() {
   // set state for guestList array
@@ -103,41 +105,39 @@ export default function Guestlist() {
   //     });
   //   }, [lastName, deleteGuest]);
 
-  function mapOverGuestList(guest) {
+  function updateGuestList(guest) {
     return (
-      <div
-        key={`guest-${guest.lastName}-${guest.id}`}
-        data-test-id="guest"
-        className="guest"
-      >
-        <div className="guestName">
-          <p>{`${guest.firstName} `}</p>
-          <p>{guest.lastName}</p>
+      <div className="newGuest">
+        <div key={`guest-${guest.lastName}-${guest.id}`} data-test-id="guest">
+          <div className="guestName">
+            <p>{`${guest.firstName} `}</p>
+            <p>{guest.lastName}</p>
+          </div>
+          <div className="status">
+            <label>
+              <input
+                type="checkbox"
+                aria-label={'change status' + guest.firstName}
+                checked={guest.attending}
+                onChange={() => {
+                  updateAttending(guest.id, guest.attending).catch((error) =>
+                    console.log('update guest: ' + error),
+                  );
+                }}
+              />
+              {guest.attending ? 'Attending' : 'Not attending'}
+            </label>
+          </div>
+          <button
+            onClick={() =>
+              deleteOneGuest(guest.id).catch((error) =>
+                console.log('remove guest: ' + error),
+              )
+            }
+          >
+            Remove guest
+          </button>
         </div>
-        <div className="status">
-          <label>
-            <input
-              type="checkbox"
-              aria-label={'change status' + guest.firstName}
-              checked={guest.attending}
-              onChange={() => {
-                updateAttending(guest.id, guest.attending).catch((error) =>
-                  console.log('update guest: ' + error),
-                );
-              }}
-            />
-            {guest.attending ? 'Attending' : 'Not attending'}
-          </label>
-        </div>
-        <button
-          onClick={() =>
-            deleteOneGuest(guest.id).catch((error) =>
-              console.log('remove guest: ' + error),
-            )
-          }
-        >
-          Remove guest
-        </button>
       </div>
     );
   }
@@ -170,13 +170,13 @@ export default function Guestlist() {
         ) : showAttending ? (
           guestList
             .filter((guest) => guest.attending)
-            .map((guest) => mapOverGuestList(guest))
+            .map((guest) => updateGuestList(guest))
         ) : showNotAttending ? (
           guestList
             .filter((guest) => !guest.attending)
-            .map((guest) => mapOverGuestList(guest))
+            .map((guest) => updateGuestList(guest))
         ) : (
-          guestList.map((guest) => mapOverGuestList(guest))
+          guestList.map((guest) => updateGuestList(guest))
         )}
       </div>
 
@@ -188,7 +188,7 @@ export default function Guestlist() {
             setShowNotAttending(false);
           }}
         >
-          Show attending only
+          Who is attending
         </button>
         <button
           className={showNotAttending ? 'active' : 'inactive'}
@@ -197,7 +197,7 @@ export default function Guestlist() {
             setShowAttending(false);
           }}
         >
-          Show not attending only
+          Who is not attending -yet-
         </button>
         <button
           className={
@@ -218,6 +218,7 @@ export default function Guestlist() {
             First name:
             <input
               required
+              placeholder="Paul"
               disabled={isLoading ? 'disabled' : false}
               onChange={(event) => setFirstName(event.target.value)}
               value={firstName}
@@ -233,6 +234,7 @@ export default function Guestlist() {
             Last name:
             <input
               required
+              placeholder="Young"
               disabled={isLoading ? 'disabled' : false}
               onChange={(event) => setLastName(event.target.value)}
               value={lastName}
@@ -264,7 +266,7 @@ export default function Guestlist() {
             )
           }
         >
-          Delete all guest entries
+          Delete all guest
         </button>
       </div>
     </>

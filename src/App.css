@@ -1,5 +1,6 @@
 * {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  align-items: center;
 }
 
 .GuestTitel {
@@ -13,6 +14,26 @@
   font-size: calc(10px + 2vmin);
   color: white;
   text-shadow: 1px 1px 3px black;
+}
+.newGuest {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: black solid 2px;
+  border-radius: 20px;
+  width: 40%;
+  box-shadow: 1px 1px 5px #070601;
+  background-color: #faf6f2;
+  font-weight: bold;
+  text-shadow: 1px 1px 4px rgba(218, 90, 16, 0.596);
+}
+.filters {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
 }
 
 button {
@@ -36,6 +57,7 @@ button {
   display: block;
   font-size: 14px;
   font-weight: bold;
+  cursor: pointer;
 }
 
 button:hover {
