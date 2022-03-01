@@ -14,14 +14,13 @@
     "downlevelIteration": true,
     "forceConsistentCasingInFileNames": true,
     "jsx": "react-jsx",
-    "jsxImportSource": "@emotion/react",
     "noEmit": true,
     "noFallthroughCasesInSwitch": true,
     "skipLibCheck": true,
     "strict": true
   },
   "include": [
-    ".eslintrc.cjs",
+    "**/.eslintrc.cjs",
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",

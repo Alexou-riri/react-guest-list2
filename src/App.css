@@ -26,7 +26,7 @@
   box-shadow: 1px 1px 5px #070601;
   background-color: #faf6f2;
   font-weight: bold;
-  text-shadow: 1px 1px 4px rgba(218, 90, 16, 0.596);
+  text-shadow: 1px 1px 4px rgba(218, 90, 16, 0.354);
   font-size: 20px;
   text-align: center;
 }
@@ -77,6 +77,7 @@ button {
   transition: 0.5s;
   background-size: 200% auto;
   color: white;
+  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.416);
   box-shadow: 1px 1px 4px rgb(19, 18, 3);
   border-radius: 14px;
   display: block;

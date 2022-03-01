@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import './App.css';
-import { css } from '@emotion/react';
+// import { css } from '@emotion/react';
 /** @jsxImportSource @emotion/react */
 
 export default function Guestlist() {
@@ -9,13 +9,10 @@ export default function Guestlist() {
   // set inputs
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
-  const [newGuest, setNewGuest] = useState('');
   const [isLoading, setIsLoading] = useState(true);
-  const [hasError, setHasError] = useState(false);
+  const [setHasError] = useState(false);
   const [showAttending, setShowAttending] = useState(false);
   const [showNotAttending, setShowNotAttending] = useState(false);
-  const showAll = 'showAll';
-  const [filter, setFilter] = useState(showAll);
   const firstNameIsFocused = useRef(null);
   const lastNameIsFocused = useRef(null);
   const baseUrl = 'http://vast-cliffs-69007.herokuapp.com';
@@ -107,7 +104,7 @@ export default function Guestlist() {
 
   function updateGuestList(guest) {
     return (
-      <div className="newGuest">
+      <div className="newGuest" data-test-id="guest">
         <div key={`guest-${guest.lastName}-${guest.id}`} data-test-id="guest">
           <div className="guestName">
             <p>{`${guest.firstName} `}</p>
@@ -117,7 +114,7 @@ export default function Guestlist() {
             <label>
               <input
                 type="checkbox"
-                aria-label={'change status' + guest.firstName}
+                aria-label={'change status attending' + guest.firstName}
                 checked={guest.attending}
                 onChange={() => {
                   updateAttending(guest.id, guest.attending).catch((error) =>
@@ -129,6 +126,7 @@ export default function Guestlist() {
             </label>
           </div>
           <button
+            aria-label="Remove"
             onClick={() =>
               deleteOneGuest(guest.id).catch((error) =>
                 console.log('remove guest: ' + error),
