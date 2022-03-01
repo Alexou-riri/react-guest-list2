@@ -1,7 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
 import './App.css';
-// import { css } from '@emotion/react';
-/** @jsxImportSource @emotion/react */
 
 export default function Guestlist() {
   // set state for guestList array
@@ -151,15 +149,7 @@ export default function Guestlist() {
           {guestList.filter((guest) => guest.attending === true).length}
         </div>
       </div>
-      {/* <div>
-//         <GuestList
-//           guestList={guestList}
-//           setGuestList={setGuestList}
-//           setIsLoading={setIsLoading}
-//           isLoading={isLoading}
-//           baseUrl={baseUrl}
-//         />
-//       </div> */}
+
       <div>
         {isLoading ? (
           'Loading...'
