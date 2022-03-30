@@ -13,7 +13,7 @@ export default function Guestlist() {
   const [showNotAttending, setShowNotAttending] = useState(false);
   const firstNameIsFocused = useRef(null);
   const lastNameIsFocused = useRef(null);
-  const baseUrl = 'http://vast-cliffs-69007.herokuapp.com';
+  const baseUrl = 'https://vast-cliffs-69007.herokuapp.com';
 
   useEffect(() => {
     async function getGuests() {
